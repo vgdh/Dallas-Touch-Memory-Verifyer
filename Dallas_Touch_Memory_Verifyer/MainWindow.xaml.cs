@@ -127,7 +127,7 @@ namespace Dallas_Touch_Memory_Verifyer
             }
 
 
-            if (keyInBytes.Count() != 7 || keyCRCByteInput.Count() != 1)
+            if (keyInBytes.Count() != 7 || keyCRCByteInput.Count() != 1 || keyCRCinputWithoutSpaces.Length >2)
             {
                 TextBoxKeyCRC.Background = Brushes.Red;
                 ReversedKey = string.Empty;
