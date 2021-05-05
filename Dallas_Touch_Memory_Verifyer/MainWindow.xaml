@@ -1,0 +1,51 @@
+﻿<Window x:Class="Dallas_Touch_Memory_Verifyer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dallas_Touch_Memory_Verifyer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="100" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="76*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Grid.Column="0" 
+               Content="Dallas Touch Memory key number:"
+               VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Name="TextBoxKeyCRC"
+                 MaxLength="3"
+                 CharacterCasing="Upper"
+                 PreviewTextInput="TextBoxKeyCRC_PreviewTextInput"
+                 Text="{Binding DallasKeyCrc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Background="{Binding DallasKeyCrcBackground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="0" 
+                 Grid.Column="2" 
+                 Name="TextBoxKeyNumber"
+                 VerticalContentAlignment="Center"
+                 CharacterCasing="Upper"
+                 MaxLength="30"
+                 PreviewTextInput="TextBoxKeyNumber_PreviewTextInput"
+                 Text="{Binding DallasKeyNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="0" 
+               Content="Reversed number:" 
+               VerticalContentAlignment="Center"/>
+        <TextBox Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1"
+                 Text="{Binding ReversedKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>
