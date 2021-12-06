@@ -145,6 +145,23 @@ namespace Dallas_Touch_Memory_Verifyer
                 TextBoxKeyCRC.Background = Brushes.Green;
                 return;
             }
+
+
+
+            var keyInBytesFull = StringToByteArray(keyWithoutSpaces).ToList();
+            keyInBytesFull.Insert(0, keyCRCByteInput[0]);
+            var crcRev = keyInBytesFull[7];
+            var keyRev = keyInBytesFull.GetRange(0,7);
+
+
+            byte keyCRCcalculatedForReversed = iButtonCRC(keyRev.ToArray());
+            if (crcRev == keyCRCcalculatedForReversed)
+            {
+                DallasKeyCrc = BitConverter.ToString(new byte[]{crcRev});
+                keyRev.Reverse();
+             
+                DallasKeyNumber = BitConverter.ToString(keyRev.ToArray());
+            }
             else
             {
                 TextBoxKeyCRC.Background = Brushes.Red;
@@ -152,6 +169,7 @@ namespace Dallas_Touch_Memory_Verifyer
                 return;
             }
         }
+
 
         public static byte[] StringToByteArray(string hex)
         {
